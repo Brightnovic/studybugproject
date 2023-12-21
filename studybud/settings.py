@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-7^k9g&zpot@pdy8d$48xuljxw@t3i07b-in%hq(c$jf#2%f@k-"
-
+SECRET_KEY = os.environ.get("SECRET_KEY")
+#"django-insecure-7^k9g&zpot@pdy8d$48xuljxw@t3i07b-in%hq(c$jf#2%f@k-"
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOST").split(" ")
 
 
 # Application definition
@@ -94,8 +94,9 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-DATABASES["default"] = dj_database_url.parse("postgres://studybug_user:hCSWjajSWcAmeHPoyOjpwO9FupC0tpx8@dpg-cm1nm7en7f5s73enbrk0-a.oregon-postgres.render.com/studybug")
-#
+database_url = os.environ.get("DATABASE_URL")
+DATABASES["default"] = dj_database_url.parse(database_url)
+#"postgres://studybug_user:hCSWjajSWcAmeHPoyOjpwO9FupC0tpx8@dpg-cm1nm7en7f5s73enbrk0-a.oregon-postgres.render.com/studybug"
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
