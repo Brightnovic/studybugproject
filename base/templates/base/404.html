@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'style/404.css' %}">
+<section class="flex items-center h-full bg-no-repeat bg-cover bg-center bg-[url('../images/error-8.png')]">
+    <div class="container">
+        <div class="text-center max-w-lg mx-auto text-white">
+
+            <h1
+                class="  text-9xl font-bold bg-clip-text   bg-cover bg-bottom bg-no-repeat bg-[url('{% static 'images/error-8.png' %}')] mb-5">
+                404 ERROR!</h1>
+            <p class="font-medium">oops wrong link!</p>
+            <div class="mt-8">
+                <button
+                    class="border font-medium rounded-full transition-all duration-300 hover:bg-white hover:text-black px-10 py-2"><a
+                        href="{%  url 'home' %}"> Return Back</a></button>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'main.html' %}
+{% block content %}
+
+{% load static %}
+<main class="  max-width" id="max-width">
+    <div class="form " id="grid_container">
+        <div>
+            <div class="layout__boxTitle">
+                <h3 id="label-username" class="">USERNAME</h3>
+
+            </div>
+            <div>
+                <div class="  form__group ">
+                    <input type="text" id="username"> <button class="btn btn--main" id="btn-join">join</button>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <div id="chat">
+            <div>
+                <div id="video-container">
+                    {% static 'video/ruger.mp4' %}
+                    <video id="local-video" autoplay class="videowidth" src=""></video>
+                    <div>
+                        <button id="btn-toggle-audio" class="btn btn--main">Mute audio</button>
+                        <button id="btn-toggle-video" class="btn btn--main">close video</button>
+                        <button id="btn-share-screen" class="btn btn--main">share screen</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div>
+            <h3>chat</h3>
+            <div id="message">
+                <ul id="message-">list</ul>
+            </div>
+            <div class="  form__group ">
+                <input type="text" id="msg">
+            </div>
+            <button id="btn-send-msg" class="btn btn--main">send messsage</button>
+            <div class="layout__boxTitle">
+                <h3 id="label-username" class="">Participants</h3>
+                <hr>
+                <br>
+                <div id="participants">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+<script src="{% static 'js/main.js' %}"></script>
+{% endblock content %}

@@ -1,0 +1,111 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<main class=" widthchat">
+    <div class="container">
+        <!-- Room Start -->
+        <div class="room">
+            <div class="room__top">
+                <div class="room__topLeft">
+                    <a href=" ">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                            viewBox="0 0 32 32">
+                            <title>arrow-left</title>
+                            <path
+                                d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z">
+                            </path>
+                        </svg>
+                    </a>
+                    <h3>Study Room</h3>
+                </div>
+
+
+
+            </div>
+            <div class="room__box scroll">
+
+                <div class="room__conversation">
+                    <div class="threads scroll">
+
+
+
+                        <div>
+
+                            <a href=" ">delete?</a>
+
+
+                            <small>@ ago</small>
+                            <p> </p>
+                            <hr>
+                        </div>
+
+
+                        <div class="thread">
+                            <div class="thread__top">
+                                <div class="thread__author">
+                                    <a href=" " class="thread__authorInfo">
+                                        <div class="avatar avatar--small">
+                                            <img src="https://randomuser.me/api/portraits/men/37.jpg" />
+                                        </div>
+                                        <span>@ </span>
+                                    </a>
+                                    <span class="thread__date"> ago</span>
+                                </div>
+
+                                <a href=" ">
+                                    <div class="thread__delete">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                                            viewBox="0 0 32 32">
+                                            <title>remove</title>
+                                            <path
+                                                d="M27.314 6.019l-1.333-1.333-9.98 9.981-9.981-9.981-1.333 1.333 9.981 9.981-9.981 9.98 1.333 1.333 9.981-9.98 9.98 9.98 1.333-1.333-9.98-9.98 9.98-9.981z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                </a>
+
+
+                            </div>
+                            <div class="thread__details">
+                                message body
+                                <!-- privateroom.html -->
+                                {% for message in chat_messages %}
+                                <div>
+                                    <p>{{ message.body }}</p>
+                                    <p>Sent by: {{ message.user.username }}</p>
+                                    <p>Sent at: {{ message.created }}</p>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="room__message">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Send</button>
+
+                </form>
+            </div>
+
+        </div>
+        <!-- Room End -->
+
+        <!--   Start -->
+
+
+        <!--  End -->
+    </div>
+</main>
+
+
+
+
+
+{% endblock content%}
