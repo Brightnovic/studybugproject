@@ -144,12 +144,12 @@ STATICFILES_DIRS =[
     BASE_DIR /'static'
 ]
 
-STORAGES = {
+""" STORAGES = {
     # ...
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
-}
+} """
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
