@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "privatechat",
     "rest_framework",
     "corsheaders",
+    "whitenoise.runserver_nostatic",
 ]
 
 AUTH_USER_MODEL = 'base.User'
