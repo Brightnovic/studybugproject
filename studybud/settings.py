@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     "privatechat",
     "rest_framework",
     "corsheaders",
-  #  "whitenoise.runserver_nostatic",
+ 
 ]
 
 AUTH_USER_MODEL = 'base.User'
@@ -64,7 +64,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "studybud.urls"
 
-#STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+ 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
  
