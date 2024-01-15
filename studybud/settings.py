@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-#os.environ.get("DEBUG", "False").lower() == "true"
+os.environ.get("DEBUG", "False").lower() == "true"
 #ALLOWED_HOSTS = ['127.0.0.1']
 #production use!
 ALLOWED_HOSTS = ['studybud-9sp8.onrender.com']
