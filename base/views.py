@@ -5,11 +5,10 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
 from .models import Room, Topic, Message, User
+from .functions import clean_username ,clean_email
 from .forms import RoomForm, UserForm ,MyUserCreationForm
 
-# Create your views here
-#from django.contrib.auth.forms  import UserCreationForm
-
+ 
 def custom_404_view(request, exception):
     title = "page not found!"
     context = {'title': title}
@@ -35,8 +34,7 @@ def home(request):
         Q(topic__name__icontains= q) |
         Q(name__icontains= q)|
         Q(description__icontains= q)
-                                
-                                
+ 
                                 )[0:5]
     room_count = rooms.count()
     topics = Topic.objects.all()[0:5]
@@ -78,16 +76,18 @@ def LoginPage(request):
         password =request.POST.get("password")
         try:
             user = User.objects.get(email=email)
-            
+             
         except:
-            messages.error(request, "system Error!   ")
+             
+            messages.error(request, "email doesn't exist! please try again")
         user = authenticate(request, email=email,password=password)
+         
         if user is not None:
 
             login(request,user)
             return redirect('home')
         else:
-            messages.error(request, "Username or Password doesn't exist! check and try again")
+            messages.error(request, "Password doesn't exist! check and try again")
 
     return render(request, 'base/login_register.html' , context)
 
@@ -96,11 +96,9 @@ def LoginPage(request):
 
 
 def logoutUser(request):
-
-    title = "Register or Sign up"
-    context = {'title': title}
+ 
     logout(request)
-    return redirect('home', context)
+    return redirect('home',)
 
 
 def registerPage(request):
@@ -110,10 +108,12 @@ def registerPage(request):
     if request.method == 'POST':
         form = MyUserCreationForm(request.POST)
         if form.is_valid():
-            print(form)
+            
             user = form.save(commit=False)
-            username = form.cleaned_data['username'].lower()  # Convert username to lowercase
-            user.username = username  # Assign modified username to the user object
+            username = form.cleaned_data['username'].lower()
+            if " " in username:
+                messages.error(request, "make sure your username doesn't contain a white space")
+            user.username = username   
             user.save()
             
             #user = user.username.lower()
@@ -121,7 +121,7 @@ def registerPage(request):
             login(request,user)
             return redirect('home')
         else:
-            messages.error(request, 'sorry!, something went wrong! we are trying to fix it!')
+            messages.error(request, f" the form you submitted  isn't valid make sure that your username  doesn't contain a space and email haven't been used before ")
     context = {'page': page , 'form': form, 'title': title}
     return render(request, 'base/login_register.html', context)
 

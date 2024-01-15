@@ -10,16 +10,20 @@
 
     <link rel="stylesheet" type="text/css" media="screen" href="{% static 'style/style.css' %}">
     <link rel="stylesheet" type="text/css" media="screen" href="{% static 'style/main.css' %}">
+    {% if title %}
     <title class="text-c">{{title}}</title>
+    {% else %}
+    <title class="text-c"> studybud unknown page</title>
+    {% endif %}
 </head>
 
 <body>
 
     {% include 'navbar.html'%}
 
-    <div class="messages mynavp">
+    <div class="  z-100 ">
         {% for message in messages %}
-        <div class="text-danger text-center fw-bold py-2 text-center">{{ message }} </div>
+        <div class="text-danger text-center fw-bold py-2 text-center2 x">{{ message }} </div>
         {% endfor %}
     </div>
 

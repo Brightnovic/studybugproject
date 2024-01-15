@@ -6,6 +6,13 @@
     --shaddow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
+.z-100 {
+    z-index: 1000 !important;
+    position: absolute;
+    width: 100%;
+    color: white;
+    font-weight: 900;
+}
 
 
 /* ------------------  Register Page ------------------ */
@@ -162,7 +169,14 @@
 }
 
 .text-center {
-    text-align: center;
+    text-align: center !important;
+    z-index: 999;
+    padding: 1rem 0;
+    width: 100%;
+}
+
+.text-center2 {
+    text-align: center !important;
     z-index: 999;
     padding: 1rem 0;
 }

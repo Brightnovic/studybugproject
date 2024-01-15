@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
-#import dj_database_url
+import dj_database_url
 #import whitenoise
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,13 +21,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '56456346234432rfhhnghmmhghgnf'
-#os.environ.get("SECRET_KEY")
+#SECRET_KEY = '56456346234432rfhhnghmmhghgnf'
+os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 #os.environ.get("DEBUG", "False").lower() == "true"
+#ALLOWED_HOSTS = ['127.0.0.1']
+#production use!
 ALLOWED_HOSTS = ['studybud-9sp8.onrender.com']
-#os.environ.get("ALLOWED_HOST").split(" ")
+os.environ.get("ALLOWED_HOST").split(" ")
 # Application definition
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -98,8 +100,8 @@ DATABASES = {
         "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
-#database_url = os.environ.get("DATABASE_URL")
-#DATABASES["default"] = dj_database_url.parse(database_url)
+database_url = os.environ.get("DATABASE_URL")
+DATABASES["default"] = dj_database_url.parse(database_url)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -128,6 +130,6 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
-
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 # Static files (CSS, JavaScript, Images)
 # https://

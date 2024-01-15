@@ -436,6 +436,7 @@ a {
 
 .layout {
   margin-top: 2.4rem;
+  z-index: -1;
 }
 
 .layout>.container {
@@ -874,6 +875,7 @@ a {
 .auth .layout__boxHeader {
   text-align: center;
   justify-content: center;
+  z-index: -1;
 }
 
 .auth__action {
