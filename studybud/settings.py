@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['studybud-9sp8.onrender.com']
 os.environ.get("ALLOWED_HOST").split(" ")
 # Application definition
 INSTALLED_APPS = [
+ 
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -45,7 +46,7 @@ INSTALLED_APPS = [
     "privatechat",
     "rest_framework",
     "corsheaders",
- 
+
 ]
 
 AUTH_USER_MODEL = 'base.User'
